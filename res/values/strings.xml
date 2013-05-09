@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MainActivity</string>
+    <string name="app_name">Order Picker</string>
+    <string name="title_order_list">Orders</string>
+    <string name="title_order_detail">Order</string>
+    <string name="label_order_name"></string>
 </resources>
