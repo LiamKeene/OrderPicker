@@ -23,7 +23,12 @@ public class OrderDetailFragment extends Fragment
             R.layout.order_detail_fragment, container, false)
         ;
         orderText = (TextView) viewer.findViewById(R.id.label_order_name);
-        orderText.setText(order);
+        populateOrderDetails(order);
         return viewer;
+    }
+
+    public void populateOrderDetails(String order)
+    {
+        orderText.setText(order);
     }
 }
