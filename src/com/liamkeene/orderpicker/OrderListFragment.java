@@ -24,8 +24,19 @@ public class OrderListFragment extends ListFragment
     public void onListItemClick(ListView l, View v, int position, long id)
     {
         super.onListItemClick(l, v, position, id);
-        Intent launchingIntent = new Intent(getActivity(), OrderDetailActivity.class);
-        launchingIntent.putExtra("ORDER", orderList[position]);
-        startActivity(launchingIntent);
+
+        OrderDetailFragment viewer = (OrderDetailFragment) getFragmentManager()
+            .findFragmentById(R.id.order_detail);
+
+        if (viewer == null || !viewer.isInLayout())
+        {
+            Intent launchingIntent = new Intent(getActivity(),
+                OrderDetailActivity.class);
+            launchingIntent.putExtra("ORDER", orderList[position]);
+            startActivity(launchingIntent);
+        } else
+        {
+            viewer.populateOrderDetails(orderList[position]);
+        }
     }
 }
