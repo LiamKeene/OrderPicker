@@ -10,4 +10,8 @@ public class Order {
         this.name = name;
         this.date = date;
     }
+
+    public String toDisplay() {
+        return "Order " + this.id;
+    }
 }
