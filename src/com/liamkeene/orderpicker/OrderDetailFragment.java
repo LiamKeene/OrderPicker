@@ -8,15 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class OrderDetailFragment extends Fragment
-{
+public class OrderDetailFragment extends Fragment {
     // Implement the Order class
     TextView orderText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState)
-    {
+            Bundle savedInstanceState) {
         Intent launchingIntent = getActivity().getIntent();
         String order = launchingIntent.getStringExtra("ORDER");
         View viewer = (View) inflater.inflate(
@@ -27,8 +25,7 @@ public class OrderDetailFragment extends Fragment
         return viewer;
     }
 
-    public void populateOrderDetails(String order)
-    {
+    public void populateOrderDetails(String order) {
         orderText.setText(order);
     }
 }
