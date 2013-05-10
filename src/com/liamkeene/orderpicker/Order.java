@@ -1,3 +1,5 @@
+package com.liamkeene.orderpicker;
+
 public class Order {
     String id;
     String name;
