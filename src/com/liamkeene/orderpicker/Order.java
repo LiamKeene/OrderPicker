@@ -29,6 +29,10 @@ public class Order implements Parcelable {
         }
     }
 
+    public String getId() { return this.id; }
+    public String getName() { return this.name; }
+    public String getDate() { return this.date; }
+
     public String toString() {
         return "Order " + this.id;
     }
