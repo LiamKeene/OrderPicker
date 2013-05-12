@@ -27,11 +27,8 @@ import org.json.JSONObject;
 
 public class OrderListFragment extends ListFragment {
     //
-    private List<String> ordersArray = new ArrayList<String>();
+    private List<Order> ordersArray = new ArrayList<Order>();
     private ArrayAdapter<String> arrayAdapter;
-
-    // Implement the OrderList class
-    private final String[] orderList = {"Order 1", "Order 2", "Order 3", };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,16 +42,19 @@ public class OrderListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
+        // Get the Order
+        Order order = ordersArray.get(position);
+
         OrderDetailFragment viewer = (OrderDetailFragment) getFragmentManager()
             .findFragmentById(R.id.order_detail);
 
         if (viewer == null || !viewer.isInLayout()) {
             Intent launchingIntent = new Intent(getActivity(),
                 OrderDetailActivity.class);
-            launchingIntent.putExtra("ORDER", orderList[position]);
+            launchingIntent.putExtra("com.liamkeene.orderpicker.Order", order);
             startActivity(launchingIntent);
         } else {
-            viewer.populateOrderDetails(orderList[position]);
+            viewer.populateOrderDetails(order);
         }
     }
 
@@ -89,6 +89,9 @@ public class OrderListFragment extends ListFragment {
 
         @Override
         protected void onPostExecute(String result) {
+            // List of strings for Orders
+            List<String> ordersList = new ArrayList<String>();
+
             try {
                 // Create a JSON array
                 JSONArray jsonOrders = new JSONArray(result);
@@ -97,14 +100,15 @@ public class OrderListFragment extends ListFragment {
                 for (int i=0; i < jsonOrders.length(); i++) {
                     // Create an Order
                     Order order = new Order(jsonOrders.getJSONObject(i));
-                    ordersArray.add(order.toString());
+                    ordersArray.add(order);
+                    ordersList.add(order.toString());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             // Create an adapter and add the orders to it
             arrayAdapter = new ArrayAdapter<String>(
-                getActivity(), android.R.layout.simple_list_item_1, ordersArray
+                getActivity(), android.R.layout.simple_list_item_1, ordersList
             );
             setListAdapter(arrayAdapter);
         }
