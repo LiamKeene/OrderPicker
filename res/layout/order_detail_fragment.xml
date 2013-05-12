@@ -3,11 +3,23 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/label_order_id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/label_order_id" />
     <TextView
         android:id="@+id/label_order_name"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/label_order_name" />
+    <TextView
+        android:id="@+id/label_order_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/label_order_date" />
 </LinearLayout>
