@@ -24,9 +24,9 @@ public class OrderDetailFragment extends Fragment {
         View viewer = (View) inflater.inflate(
             R.layout.order_detail_fragment, container, false);
 
-        textOrderID = (TextView) viewer.findViewById(R.id.label_order_id);
-        textOrderName = (TextView) viewer.findViewById(R.id.label_order_name);
-        textOrderDate = (TextView) viewer.findViewById(R.id.label_order_date);
+        textOrderID = (TextView) viewer.findViewById(R.id.text_order_id);
+        textOrderName = (TextView) viewer.findViewById(R.id.text_order_name);
+        textOrderDate = (TextView) viewer.findViewById(R.id.text_order_date);
 
         populateOrderDetails(order);
         return viewer;
