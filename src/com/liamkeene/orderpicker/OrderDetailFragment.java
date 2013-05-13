@@ -8,24 +8,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.liamkeene.orderpicker.Order;
+
 public class OrderDetailFragment extends Fragment {
     // Implement the Order class
-    TextView orderText;
+    TextView textOrderID;
+    TextView textOrderName;
+    TextView textOrderDate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         Intent launchingIntent = getActivity().getIntent();
-        String order = launchingIntent.getStringExtra("ORDER");
+        Order order = launchingIntent.getParcelableExtra("com.liamkeene.orderpicker.Order");
         View viewer = (View) inflater.inflate(
-            R.layout.order_detail_fragment, container, false)
-        ;
-        orderText = (TextView) viewer.findViewById(R.id.label_order_name);
+            R.layout.order_detail_fragment, container, false);
+
+        textOrderID = (TextView) viewer.findViewById(R.id.text_order_id);
+        textOrderName = (TextView) viewer.findViewById(R.id.text_order_name);
+        textOrderDate = (TextView) viewer.findViewById(R.id.text_order_date);
+
         populateOrderDetails(order);
         return viewer;
     }
 
-    public void populateOrderDetails(String order) {
-        orderText.setText(order);
+    public void populateOrderDetails(Order order) {
+        textOrderID.setText(order.getId());
+        textOrderName.setText(order.getName());
+        textOrderDate.setText(order.getDate());
     }
 }
